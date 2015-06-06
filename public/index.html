@@ -6,10 +6,56 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="assets/css/cf-markobs.css"/>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular.js"></script>
+    <script type="text/javascript" src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.js"></script>
+    <script type="text/javascript" src="assets/js/cf-markobs.js"></script>
+
 </head>
 <body>
-<!-- Add your site or application content here -->
-<p>Hello world! This is HTML5 Boilerplate.</p>
+
+<div ng-app="cf-markobs" ng-cloak="">
+
+    <div ng-controller="MarkObsTestController as moCtrl" ng-cloak="">
+
+        <div class="row wide">
+
+            <h1>markobs proof of concept</h1>
+
+            <a href="#" class="button" ng-click="moCtrl.changeVar()">test watch</a>
+
+            <div class="large-6 columns">
+
+                <p>the editor will go here</p>
+
+            </div>
+            <div class="large-6 columns">
+
+                <div class="row push-down">
+
+                    <h3>Preview</h3>
+
+                    <div class="panel" ng-bind-html="moCtrl.html"></div>
+                </div>
+
+                <hr/>
+
+                <div class="row push-down">
+                    <h3>HTML code</h3>
+                    <pre><code class="html"><pretty-code>{{moCtrl.html}}</pretty-code></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 
 </body>
 </html>
