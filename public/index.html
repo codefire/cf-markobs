@@ -24,6 +24,9 @@
             white-space: -o-pre-wrap;    /* Opera 7 */
             word-wrap: break-word;       /* Internet Explorer 5.5+ */
         }
+        code{
+            border-style: none;
+        }
     </style>
 
 </head>
@@ -42,16 +45,22 @@
                 <ul class="button-group">
                     <li><a href="#" class="button" ng-click="moCtrl.setContent('empty')">Empty</a></li>
                     <li><a href="#" class="button" ng-click="moCtrl.setContent('lorem')">Lorem ipsum</a></li>
+                    <li><a href="#" class="button" ng-click="moCtrl.setContent('owls')">Owls (wikipedia)</a></li>
                 </ul>
             </div>
 
             <div class="large-6 columns">
 
                 <div class="row push-down">
-                    <p>the editor will go here</p>
+
+
+                    <p>editor will go here</p>
+
+
                 </div>
                 <div class="row push-down">
                     <h3>markob</h3>
+                    <p>This is the raw markob object in json format</p>
                     <pre><code><pretty-code class="json">{{moCtrl.markob}}</pretty-code></code></pre>
                 </div>
 
@@ -61,6 +70,7 @@
 
                 <div class="row push-down">
                     <h3>Preview</h3>
+                    <p>This is how the markob will look as HTML with the current stylesheets</p>
                     <div class="panel" ng-bind-html="moCtrl.html"></div>
                 </div>
 
@@ -68,6 +78,7 @@
 
                 <div class="row push-down">
                     <h3>HTML code</h3>
+                    <p>This is the HTML code generated from the markob</p>
                     <pre><code><pretty-code class="html">{{moCtrl.html}}</pretty-code></code></pre>
                 </div>
             </div>
