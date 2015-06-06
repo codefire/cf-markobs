@@ -38,7 +38,10 @@
 
         <div class="row wide">
 
-            <h1>markobs proof of concept</h1>
+            <h1>markobs : proof of concept</h1>
+
+            <p>markobs are HTML objects, or markup-objects if you will. The concept is to have a very strict system for building HTML that can be used by novices with zero HTML experience.</p>
+            <p>The driving goals of this system verses other WYSIWYG system will be the complete lack of HTML cruft and easy future proofing with regards future developments in HTML and not tying the data to any single programming language or CSS framework.</p>
 
             <div class="panel">
                 <h4>Test Content</h4>
@@ -49,13 +52,97 @@
                 </ul>
             </div>
 
+        </div>
+
+        <div class="row wide">
             <div class="large-6 columns">
 
                 <div class="row push-down">
 
+                    <h3>The Editor</h3>
+                    <p>This will be friendly UI for building a markob</p>
 
-                    <p>editor will go here</p>
+                    <div class="markob-editor">
 
+                        <div ng-repeat="item in moCtrl.markob.items">
+
+                            <label class="item-label">{{item.type}}</label>
+
+                            <div class="item-row" ng-switch="item.type">
+                                <div ng-switch-when="heading">
+
+                                    <div ng-switch="item.rank">
+                                        <h1 ng-switch-when="1">
+                                            {{item.content}}
+                                        </h1>
+                                        <h2 ng-switch-when="2">
+                                            {{item.content}}
+                                        </h2>
+                                        <h3 ng-switch-when="3">
+                                            {{item.content}}
+                                        </h3>
+                                        <h4 ng-switch-when="4">
+                                            {{item.content}}
+                                        </h4>
+                                        <h5 ng-switch-when="5">
+                                            {{item.content}}
+                                        </h5>
+                                        <h6 ng-switch-when="6">
+                                            {{item.content}}
+                                        </h6>
+                                    </div>
+
+                                </div>
+                                <div ng-switch-when="image">
+
+                                    <img ng-src="{{item.attributes.src}}" alt="{{item.attributes.alt}}">
+
+                                </div>
+                                <div ng-switch-when="paragraph">
+
+                                    <div ng-if="!item.items || item.items.length == 0">
+                                        <p>{{item.content}}</p>
+                                    </div>
+
+                                    <div ng-if="item.items && item.items.length > 0">
+                                        a para with <strong>{{item.items.length}}</strong> items
+                                        <p>item :: {{item}}</p>
+                                    </div>
+
+                                </div>
+                                <div ng-switch-when="list">
+
+                                    <div ng-switch="item.flavour">
+                                        <ol ng-switch-when="ordered">
+                                            <li ng-repeat="li in item.items">
+                                                {{li.content}}
+                                            </li>
+                                        </ol>
+                                        <ul ng-switch-when="unordered">
+                                            <li ng-repeat="li in item.items">
+                                                {{li.content}}
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <div ng-switch-default>
+
+                                    <p>
+                                        still need to create : <strong>{{item.type}}</strong>
+                                    </p>
+
+                                    <p>item :: {{item}}</p>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <hr/>
 
                 </div>
                 <div class="row push-down">
@@ -83,6 +170,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>
