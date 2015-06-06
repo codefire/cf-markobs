@@ -5,7 +5,6 @@
   "authors": [
     "samarqhand <samarqhand@hidden.well>"
   ],
-  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,5 +14,9 @@
   ],
   "dependencies": {
     "angular": "~1.4.0"
+  },
+  "devDependencies": {
+    "cf-css": "codefire/cf-css",
+    "foundation-icon-fonts": "*"
   }
 }
