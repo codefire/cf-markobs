@@ -1,0 +1,19 @@
+{
+  "name": "cf-markobs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/codefire/cf-markobs",
+  "authors": [
+    "samarqhand <samarqhand@hidden.well>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0"
+  }
+}
