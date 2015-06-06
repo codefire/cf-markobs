@@ -17,6 +17,8 @@
   },
   "devDependencies": {
     "cf-css": "codefire/cf-css",
-    "foundation-icon-fonts": "*"
+    "foundation-icon-fonts": "*",
+    "js-beautify": "beautify-web/js-beautify#~1.5.6",
+    "angular-highlightjs": "pc035860/angular-highlightjs#~0.4.1"
   }
 }

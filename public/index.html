@@ -10,12 +10,21 @@
     <link rel="stylesheet" href="assets/css/cf-markobs.css"/>
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
-
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="assets/js/angular.js"></script>
-    <script type="text/javascript" src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.js"></script>
+    <script type="text/javascript" src="assets/js/html-formatting.js"></script>
+
     <script type="text/javascript" src="assets/js/cf-markobs.js"></script>
+
+    <style>
+        pre {
+            white-space: pre-wrap;       /* CSS 3 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        }
+    </style>
 
 </head>
 <body>
@@ -28,19 +37,30 @@
 
             <h1>markobs proof of concept</h1>
 
-            <a href="#" class="button" ng-click="moCtrl.changeVar()">test watch</a>
+            <div class="panel">
+                <h4>Test Content</h4>
+                <ul class="button-group">
+                    <li><a href="#" class="button" ng-click="moCtrl.setContent('empty')">Empty</a></li>
+                    <li><a href="#" class="button" ng-click="moCtrl.setContent('lorem')">Lorem ipsum</a></li>
+                </ul>
+            </div>
 
             <div class="large-6 columns">
 
-                <p>the editor will go here</p>
+                <div class="row push-down">
+                    <p>the editor will go here</p>
+                </div>
+                <div class="row push-down">
+                    <h3>markob</h3>
+                    <pre><code><pretty-code class="json">{{moCtrl.markob}}</pretty-code></code></pre>
+                </div>
+
 
             </div>
             <div class="large-6 columns">
 
                 <div class="row push-down">
-
                     <h3>Preview</h3>
-
                     <div class="panel" ng-bind-html="moCtrl.html"></div>
                 </div>
 
@@ -48,7 +68,7 @@
 
                 <div class="row push-down">
                     <h3>HTML code</h3>
-                    <pre><code class="html"><pretty-code>{{moCtrl.html}}</pretty-code></code></pre>
+                    <pre><code><pretty-code class="html">{{moCtrl.html}}</pretty-code></code></pre>
                 </div>
             </div>
         </div>

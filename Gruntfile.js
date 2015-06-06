@@ -40,6 +40,15 @@ module.exports = function (grunt) {
                     bowerPath + 'angular/angular.js'
                 ],
                 dest: 'public/assets/js/angular.js'
+            },
+            htmlFormat: {
+                src: [
+                    bowerPath + 'highlightjs/highlight.pack.js',
+                    bowerPath + 'angular-highlightjs/angular-highlightjs.js',
+                    bowerPath + 'js-beautify/js/lib/beautify.js',
+                    bowerPath + 'js-beautify/js/lib/beautify-html.js'
+                ],
+                dest: 'public/assets/js/html-formatting.js'
             }
         },
         uglify: {
