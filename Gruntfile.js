@@ -70,6 +70,18 @@ module.exports = function (grunt) {
                 dest: 'src/js/cf-templates.js'
             }
         },
+        copy: {
+            foundation: {
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: [bowerPath + 'foundation-icon-fonts/*.eot', bowerPath + 'foundation-icon-fonts/*.svg' , bowerPath + 'foundation-icon-fonts/*.ttf', bowerPath + 'foundation-icon-fonts/*.woff'],
+                        dest: 'public/assets/fonts/'
+                    }
+                ]
+            }
+        },
         watch: {
             sass: {
                 files: 'src/sass/*',
@@ -110,6 +122,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-html2js');
 

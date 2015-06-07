@@ -12,6 +12,7 @@ function MarkObsTestController($window, $scope, $sce) {
     moCtrl.debug = "If you can see this, then MarkObsTestController is working :-)";
     moCtrl.html = '';
     moCtrl.markob = {};
+    moCtrl.deletedItems = [];
 
     $scope.$watch("moCtrl.markob", (function (updated, previous) {
         moCtrl.html = $sce.trustAsHtml(moCtrl.generateHtmlCode());
@@ -213,6 +214,40 @@ function MarkObsTestController($window, $scope, $sce) {
         return html;
 
     }
+
+    this.removeItem = function(index, item) {
+        item.previousIndex = index;
+        moCtrl.deletedItems.push(item);
+        return this.markob.items.splice(index, 1);
+    };
+    
+    this.reinstateDeleted = function(index, item) {
+        var from;
+        this.markob.items.push(item);
+        if (typeof item.previousIndex !== 'undefined') {
+            from = this.markob.items.indexOf(item);
+            if (typeof from !== 'undefined' && from !== item.previousIndex) {
+                this.markob.items.move(from, item.previousIndex);
+            }
+        }
+        return moCtrl.deletedItems.splice(index, 1);
+    };
+    
+    this.moveItemUp = function(index, item) {
+        if (index === 0) {
+            return false;
+        }
+        return this.markob.items.move(index, index - 1);
+    };
+    
+    this.moveItemDown = function(index, item) {
+        if (index === this.markob.items.length - 1) {
+            return false;
+        }
+        return this.markob.items.move(index, index + 1);
+    };
+
+
 
     this.setContent = function (type) {
 
@@ -463,5 +498,13 @@ function CodeHighlighterDirective($interpolate, $window) {
     };
 }
 
+
+
+Object.defineProperty(Array.prototype, "move", {
+    enumerable: false,
+    value: function(from, to) {
+        this.splice(to, 0, this.splice(from, 1)[0]);
+    }
+});
 angular.module('cf-templates', []);
 
